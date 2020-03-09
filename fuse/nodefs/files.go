@@ -30,6 +30,10 @@ func (f *dataFile) String() string {
 	return fmt.Sprintf("dataFile(%x)", f.data[:l])
 }
 
+func (f *dataFile) getBytes() []byte {
+	return f.data
+}
+
 func (f *dataFile) GetAttr(out *fuse.Attr) fuse.Status {
 	out.Mode = fuse.S_IFREG | 0644
 	out.Size = uint64(len(f.data))
